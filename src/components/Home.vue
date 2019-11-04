@@ -17,6 +17,8 @@
             unique-opened
             :collapse="isCollapse"
             :collapse-transition="false"
+            router
+            :default-active="activePath"
             >
                 <el-submenu :index="item.id+''" v-for="item in list" :key="item.id">
                     <template slot="title">
@@ -76,8 +78,8 @@ export default {
         this.isCollapse = !this.isCollapse
     },
     saveNavState(activePath) {
-        this.activePath = '/' + activePath
         sessionStorage.setItem('activePath','/' + activePath)
+        this.activePath = '/' + activePath
     }
   }
 };
